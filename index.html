@@ -53,7 +53,7 @@
 			}
 
 			.iframes > .frame-wrapper {
-				opacity: 0.3;
+				opacity: 0.2;
 				filter: saturate(0);
 				transition: 0.3s;
 			}
@@ -61,6 +61,7 @@
 			.iframes > .frame-wrapper.active {
 				opacity: 1;
 				filter: none;
+				transform: none;
 			}
 			.iframes iframe {
 				margin: 0 auto;
@@ -175,8 +176,8 @@
 				let divv = document.createElement("div");
 				divv.className = "frame-wrapper";
 				divv.innerHTML = `
-			                 <span class="icon abs refresh-icon"><img draggable="false" width="20" src="./refresh.png" /></span>
-			                 <span class="icon abs new-tab"><img draggable="false" width="20" src="./newtab.png" /></span>
+			                 <span title="Replay" class="icon abs refresh-icon"><img draggable="false" width="20" src="./refresh.png" /></span>
+			                 <span title="Open in new tab" class="icon abs new-tab"><img draggable="false" width="20" src="./newtab.png" /></span>
 			             `;
 
 				let iframe = document.createElement("iframe");
@@ -216,6 +217,7 @@
 				function (entries, observer) {
 					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
+							console.log("intersecting");
 							entry.target.classList.add("active");
 						} else {
 							entry.target.classList.remove("active");
