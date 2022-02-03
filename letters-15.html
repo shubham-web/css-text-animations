@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			:root {
+				--color: #ff9800;
+			}
+			body {
+				background: var(--color);
+			}
+			video {
+				border-radius: 1rem;
+			}
+			@keyframes offsetzero {
+				to {
+					stroke-dashoffset: 0;
+				}
+			}
+			h1 {
+				position: absolute;
+				z-index: 1;
+				font-size: 5rem;
+				width: 100vw;
+				text-align: center;
+				line-height: 100vh;
+				background: white;
+				mix-blend-mode: screen;
+				text-shadow: 0 0 2px black;
+				overflow: hidden;
+				opacity: 1;
+				animation: fadeOut 3s forwards;
+				animation-delay: 4s;
+				pointer-events: none;
+			}
+			h1 span {
+				display: block;
+				animation: zoomIn 3s forwards;
+				animation-delay: 3s;
+				opacity: 1;
+				transform: scale(1);
+			}
+			@keyframes zoomIn {
+				to {
+					transform: scale(5);
+					opacity: 0;
+				}
+			}
+			@keyframes fadeOut {
+				to {
+					opacity: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<video loop muted loop autoplay src="./IndiaSkills National Competition 2018.mp4"></video>
+		<h1><span>#IndiaSkills</span></h1>
+		<!-- animation script -->
+	</body>
+</html>

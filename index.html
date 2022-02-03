@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Text Animations</title>
+		<style>
+			body {
+				margin: 0;
+				font-family: system-ui;
+			}
+			.frame-wrapper {
+				position: relative;
+			}
+
+			.icon {
+				bottom: 20px;
+				right: 20px;
+				background: white;
+				padding: 6px 12px;
+				border-radius: 10px;
+				cursor: pointer;
+				border: 4px solid #e6e6e6;
+			}
+			.icon.abs {
+				position: absolute;
+			}
+
+			.linkk {
+				position: relative;
+				cursor: pointer;
+			}
+			.linkk .new-tab {
+				border: none;
+				right: 0;
+				bottom: auto;
+			}
+			span.refresh-icon {
+				right: 90px;
+			}
+			.iframes,
+			.linkss {
+				padding: 4rem;
+				display: grid;
+				gap: 2rem;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: auto;
+				justify-content: center;
+			}
+			.linkss {
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+			}
+
+			@media screen and (max-width: 1330px) {
+				.iframes,
+				.linkss {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+			.iframes > .frame-wrapper {
+				opacity: 0.3;
+				filter: saturate(0);
+				transition: 0.3s;
+			}
+			.iframes > .frame-wrapper:hover {
+				opacity: 1;
+				filter: none;
+			}
+			.iframes iframe {
+				margin: 0 auto;
+				width: 100%;
+				border-radius: 1rem;
+			}
+			.linkss > * {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-size: 2rem;
+
+				border-radius: 1rem;
+				border: 1px solid #e6e6e6;
+				padding: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iframes"></div>
+		<hr />
+		<div class="linkss"></div>
+
+		<script>
+			let files = [
+				"letters-10.html",
+				"letters-11.html",
+				"letters-12.html",
+				"letters-13.html",
+				"letters-14.html",
+				"letters-16.html",
+				"letters-2.html",
+				"letters-3.html",
+				"letters-4.html",
+				"letters-5.html",
+				"letters-6.html",
+				"letters-7.html",
+				"letters-8.html",
+				"letters-9.html",
+				"letters.html",
+				"text.html",
+			];
+			files.reverse();
+
+			let linkss = [
+				{
+					href: "letters-15.html",
+					label: "Bg Video",
+				},
+				{
+					href: "list.html",
+					label: "List",
+				},
+			];
+
+			let wrapper = document.querySelector(".iframes");
+			let linksWrapper = document.querySelector(".linkss");
+
+			files.forEach((path) => {
+				let divv = document.createElement("div");
+				divv.className = "frame-wrapper";
+				divv.innerHTML = `
+			                 <span class="icon abs refresh-icon"><img draggable="false" width="20" src="./refresh.png" /></span>
+			                 <span class="icon abs new-tab"><img draggable="false" width="20" src="./newtab.png" /></span>
+			             `;
+
+				let iframe = document.createElement("iframe");
+				iframe.width = 500;
+				iframe.height = 450;
+				iframe.src = path;
+				iframe.frameBorder = 0;
+				divv.appendChild(iframe);
+				divv.querySelector(".refresh-icon").addEventListener("click", () => {
+					iframe.contentWindow.location.reload();
+				});
+				let a = document.createElement("a");
+				a.href = path;
+				a.target = "_blank";
+				divv.querySelector(".new-tab").addEventListener("click", () => {
+					a.click();
+				});
+				wrapper.appendChild(divv);
+			});
+			linkss.forEach((d) => {
+				let div = document.createElement("div");
+				div.className = "linkk";
+				let a = document.createElement("a");
+				a.href = d.href;
+				a.target = "_blank";
+				div.innerHTML = `${d.label} <span class="icon new-tab"><img draggable="false" width="20" src="./newtab.png" /></span>`;
+				div.addEventListener("click", () => {
+					a.click();
+				});
+				linksWrapper.appendChild(div);
+			});
+		</script>
+	</body>
+</html>

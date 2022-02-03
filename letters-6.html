@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			body {
+				background: #f6f6f6;
+			}
+			.wrapper {
+				padding: 2rem;
+				background-color: white;
+			}
+			h1 {
+				text-align: center;
+				color: dodgerblue;
+				overflow: hidden;
+				margin: 0;
+				padding: 1rem;
+				position: relative;
+			}
+
+			h1 span {
+				animation: letters 0.5s ease-in-out forwards;
+				display: inline-block;
+				transform: translateY(100%);
+				opacity: 0;
+			}
+			h1:nth-child(even) span {
+				transform: translateY(-100%);
+			}
+			h1:first-child::after {
+				position: absolute;
+				content: "";
+				width: 100%;
+				background-color: #e6e6e6;
+				padding: 1px;
+				left: 0;
+				bottom: 0;
+				animation: scaleX 0.8s ease-in-out forwards;
+				transform: scaleX(0);
+			}
+			@keyframes scaleX {
+				to {
+					transform: scaleX(1);
+				}
+			}
+
+			@keyframes letters {
+				100% {
+					opacity: 1;
+					transform: translateY(0%);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<h1>WorldSkills</h1>
+			<h1 style="color: tomato">The Olympics of Skills</h1>
+		</div>
+
+		<!-- animation script -->
+		<script>
+			let textNodes = document.querySelectorAll("h1");
+			textNodes.forEach((textNode, index) => {
+				textNode.innerHTML = textNode.textContent.replace(/\S/g, `<span>$&</span>`);
+				textNode.style.animationDelay = `${index * 30}ms`;
+			});
+		</script>
+	</body>
+</html>

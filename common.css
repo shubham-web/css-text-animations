@@ -1,0 +1,17 @@
+html,
+body {
+	margin: 0;
+	font-family: "Work Sans", system-ui, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100%;
+}
+.wrapper {
+	padding: 1rem;
+}
+
+.wrapper.shadow {
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
+}

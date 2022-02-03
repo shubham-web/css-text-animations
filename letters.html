@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			body {
+				background: #f6f6f6;
+			}
+			.wrapper {
+				padding: 1rem;
+				background-color: white;
+			}
+			h1 {
+				text-align: center;
+				color: tomato;
+			}
+
+			h1 span {
+				animation: fadeUp 0.5s ease-in-out forwards;
+				opacity: 0;
+				transform: translateY(100%);
+				display: inline-block;
+			}
+
+			@keyframes fadeUp {
+				50% {
+					transform: translateY(-50%);
+					opacity: 1;
+				}
+				100% {
+					transform: translateY(0%);
+					opacity: 1;
+				}
+			}
+
+			.zoomIn {
+				animation: zoomIn 0.3s;
+			}
+			@keyframes zoomIn {
+				from {
+					transform: scale(0.8);
+					opacity: 0;
+				}
+				to {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<img src="wsc-logo.jpg" width="400" id="logo" alt="" />
+			<h1>Welcome To Shanghai!</h1>
+		</div>
+
+		<!-- animation script -->
+		<script>
+			let logo = document.querySelector("#logo");
+			let textNode = document.querySelector("h1");
+			textNode.innerHTML = textNode.textContent.replace(/\S/g, `<span>$&</span>`);
+			[...textNode.children].forEach((span, index) => {
+				span.style.animationDelay = `${index * 25}ms`;
+			});
+
+			logo.addEventListener("load", () => {
+				logo.classList.add("zoomIn");
+			});
+		</script>
+	</body>
+</html>

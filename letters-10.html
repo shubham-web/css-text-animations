@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			body {
+				background: #f6f6f6;
+			}
+			.wrapper {
+				padding: 4rem;
+				background-color: white;
+			}
+			h1 {
+				text-align: center;
+				color: dodgerblue;
+				position: relative;
+			}
+			h1::after {
+				position: absolute;
+				left: 0%;
+				content: "";
+				height: 100%;
+				padding: 1px;
+				transform: translateX(10px);
+				background-color: #262626;
+			}
+
+			h1 span {
+				animation: letters 0.2s linear forwards;
+				display: inline-block;
+				transform-origin: bottom;
+				opacity: 0;
+			}
+
+			@keyframes cursor {
+				to {
+					left: 100%;
+				}
+			}
+
+			@keyframes letters {
+				100% {
+					opacity: 1;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<h1>Code is Poetry!</h1>
+		</div>
+
+		<!-- animation script -->
+		<script>
+			let textNode = document.querySelector("h1");
+			textNode.innerHTML = textNode.textContent.replace(/\S/g, `<span>$&</span>`);
+			[...textNode.children].forEach((span, index, arr) => {
+				span.style.animationDelay = `${index * 30}ms`;
+				if (index === arr.length - 1) {
+					let highPriorityStylesheet = document.styleSheets[document.styleSheets.length - 1];
+					document.styleSheets[document.styleSheets.length - 1].insertRule(
+						`h1::after {
+                        animation: cursor ${index * 30}ms linear forwards;
+                    }`,
+						highPriorityStylesheet.cssRules.length - 1
+					);
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			body {
+				background: #f6f6f6;
+			}
+			.wrapper {
+				padding: 4rem;
+				background-color: white;
+			}
+			h1 {
+				text-align: center;
+				color: tomato;
+			}
+
+			h1 span {
+				animation: letters 0.5s ease-in-out forwards;
+				display: inline-block;
+				transform: translateX(-100%) scale(0);
+				transform-origin: bottom;
+				opacity: 0;
+			}
+
+			@keyframes letters {
+				100% {
+					transform: translateX(0%) scale(1);
+					opacity: 1;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<h1>Web Technologies!</h1>
+		</div>
+
+		<!-- animation script -->
+		<script>
+			let textNode = document.querySelector("h1");
+			textNode.innerHTML = textNode.textContent.replace(/\S/g, `<span>$&</span>`);
+			[...textNode.children].forEach((span, index) => {
+				span.style.transform = `translateX(-${index * 100}%) scale(0)`;
+				span.style.animationDelay = `${index * 50}ms`;
+			});
+		</script>
+	</body>
+</html>

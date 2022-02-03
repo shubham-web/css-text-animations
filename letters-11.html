@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			body {
+				background: #f6f6f6;
+			}
+			.wrapper {
+				padding: 2rem;
+				background-color: white;
+			}
+			h1 {
+				text-align: center;
+				color: dodgerblue;
+				margin: 0;
+				position: relative;
+				background-image: linear-gradient(to right, #8dee3d, dodgerblue);
+				background-size: 400% 400%;
+				background-position: 0% 0%;
+				animation: bgposition 1s ease-in-out infinite;
+				background-clip: text;
+				-webkit-background-clip: text;
+				color: transparent;
+			}
+
+			@keyframes bgposition {
+				0% {
+					background-position: 0% 0%;
+				}
+				25% {
+					background-position: 100% 0%;
+				}
+				50% {
+					background-position: 100% 100%;
+				}
+				75% {
+					background-position: 0% 100%;
+				}
+				100% {
+					background-position: 0% 0%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<h1>Use Code "EARLYBIRD"</h1>
+		</div>
+
+		<!-- animation script -->
+		<script>
+			let textNode = document.querySelector("h1");
+		</script>
+	</body>
+</html>

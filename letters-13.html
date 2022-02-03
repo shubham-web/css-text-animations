@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			:root {
+				--color: #ff9800;
+			}
+			body {
+				background: var(--color);
+			}
+			h1 {
+				color: var(--color);
+				font-size: 5rem;
+			}
+			h1 span {
+				position: relative;
+				animation: shadow 1.5s linear infinite;
+				display: inline-block;
+			}
+			@keyframes shadow {
+				0% {
+					text-shadow: none;
+					transform: translateX(0);
+				}
+				25% {
+					text-shadow: 5px 15px 30px rgba(0, 0, 0, 0.9);
+					transform: translateX(10px);
+				}
+				50% {
+					text-shadow: 5px 15px 30px rgba(0, 0, 0, 0.9);
+					transform: translateX(20px);
+				}
+				75% {
+					text-shadow: none;
+					transform: translateX(20px);
+				}
+				100% {
+					text-shadow: none;
+					transform: translateX(0);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Loading...</h1>
+
+		<!-- animation script -->
+		<script>
+			let textNode = document.querySelector("h1");
+			textNode.innerHTML = textNode.textContent.replace(new RegExp(`\\S`, "g"), "<span>$&</span>");
+			[...textNode.children].forEach((span, index) => {
+				span.style.animationDelay = `${index * 80}ms`;
+			});
+		</script>
+	</body>
+</html>

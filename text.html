@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Text Animation</title>
+		<style>
+			:root {
+				--color: #e6e6e6;
+			}
+			body {
+				background: var(--color);
+			}
+			.wrapper {
+				background-color: white;
+				padding: 2.5rem 5rem;
+			}
+			.divider {
+				padding: 2px;
+				background-color: #d6d6d6;
+				min-width: 300px;
+				animation: divider 0.5s ease forwards;
+				transform-origin: left;
+				transform: scaleX(0);
+			}
+			@keyframes divider {
+				to {
+					transform: scaleX(1);
+				}
+			}
+			h1 {
+				color: #262626;
+			}
+			.upperText,
+			.lowerText {
+				position: relative;
+				overflow: hidden;
+			}
+			.upperText h1 {
+				position: relative;
+				animation: slideUp 1s ease forwards;
+				animation-delay: 0.5s;
+				top: 150px;
+			}
+			.lowerText h1 {
+				position: relative;
+				animation: slideDown 0.5s ease forwards;
+				animation-delay: 1.5s;
+				top: -100px;
+			}
+			@keyframes slideUp {
+				0% {
+					top: 100px;
+				}
+				40% {
+					top: 60px;
+				}
+				60% {
+					top: 60px;
+				}
+				100% {
+					top: 0;
+				}
+			}
+			@keyframes slideDown {
+				0% {
+					top: -100px;
+				}
+				100% {
+					top: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<div>
+				<div class="upperText">
+					<h1>mimicking</h1>
+					<h1>apple's design</h1>
+				</div>
+				<div class="divider"></div>
+				<div class="lowerText">
+					<h1>for the win!</h1>
+				</div>
+			</div>
+		</div>
+		<!-- animation script -->
+		<script></script>
+	</body>
+</html>

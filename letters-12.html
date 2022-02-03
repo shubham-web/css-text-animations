@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			body {
+				background: green;
+			}
+			@keyframes bgpos {
+				to {
+					background-position: 50% 0%;
+				}
+			}
+			.wrapper {
+				padding: 4rem;
+				backdrop-filter: blur(30px);
+				background: #ffff;
+				border: 2px solid #ffffff80;
+			}
+			h1 {
+				user-select: none;
+				text-align: center;
+				color: dodgerblue;
+				position: relative;
+				background-image: linear-gradient(45deg, green 0%, green 45%, white 50%, green 55%, green 100%);
+				background-size: 250% 100%;
+				background-position: 0% 0%;
+				animation: bgposition 3s ease-in-out reverse infinite;
+				background-clip: text;
+				-webkit-background-clip: text;
+				color: transparent;
+			}
+
+			@keyframes bgposition {
+				0% {
+					background-position: 0% 0%;
+				}
+				100% {
+					background-position: 100% 0%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<h1>Code is Poetry!</h1>
+		</div>
+
+		<!-- animation script -->
+		<script>
+			let textNode = document.querySelector("h1");
+		</script>
+	</body>
+</html>

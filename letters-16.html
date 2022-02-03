@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>Letters Animation</title>
+		<style>
+			:root {
+				--color: #ff9800;
+			}
+			body {
+				background: var(--color);
+			}
+			h1 {
+				color: white;
+				font-size: 4rem;
+				display: flex;
+				position: relative;
+			}
+			h1 span {
+				animation: smoke 5s ease forwards;
+				display: inline-block;
+				filter: none;
+				opacity: 1;
+			}
+			@keyframes smoke {
+				to {
+					filter: blur(50px);
+					opacity: 1;
+					transform: scale(5) translateX(-150px) translateY(-150px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Smoky Effect</h1>
+		<!-- animation script -->
+		<script>
+			let h1 = document.querySelector("h1");
+			h1.innerHTML = h1.textContent.replaceAll(" ", "&nbsp;");
+			h1.innerHTML = h1.textContent.replace(/\S/g, "<span>$&</span>");
+
+			let defaultDelay = 20;
+
+			[...h1.children].forEach((span, index, arr) => {
+				span.style.animationDelay = `${defaultDelay + (arr.length - index) * 120}ms`;
+			});
+		</script>
+	</body>
+</html>

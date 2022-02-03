@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="common.css" />
+		<title>List Animation</title>
+		<style>
+			body {
+				background: #f6f6f6;
+			}
+			.wrapper {
+				padding: 4rem;
+				background-color: white;
+			}
+			ol {
+				font-size: 1.5rem;
+				line-height: 3rem;
+			}
+			ol li {
+				animation: fadeUp 0.3s forwards;
+				opacity: 0;
+				transform: translateY(-100%);
+			}
+
+			@keyframes fadeUp {
+				to {
+					transform: translateY(0%);
+					opacity: 1;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper shadow">
+			<ol>
+				<li>Identify key issues to address.</li>
+				<li>Pick an issue to work with from the list.</li>
+				<li>Set the target number.</li>
+				<li>Develop a measurement system.</li>
+				<li>Determine who's playing the game.</li>
+				<li>Estimate the benefit of winning to the organization.</li>
+				<li>Develop the reward pool for team members.</li>
+				<li>Determine game duration.</li>
+			</ol>
+		</div>
+
+		<!-- animation script -->
+		<script>
+			let list = document.querySelector("ol");
+			[...list.children].forEach((el, index) => {
+				el.style.animationDelay = `${index * 40}ms`;
+			});
+		</script>
+	</body>
+</html>
