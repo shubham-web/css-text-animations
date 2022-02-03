@@ -52,12 +52,6 @@
 				grid-template-columns: 1fr 1fr 1fr 1fr;
 			}
 
-			@media screen and (max-width: 1330px) {
-				.iframes,
-				.linkss {
-					grid-template-columns: 1fr 1fr;
-				}
-			}
 			.iframes > .frame-wrapper {
 				opacity: 0.3;
 				filter: saturate(0);
@@ -103,6 +97,25 @@
 			}
 			footer a {
 				color: black;
+			}
+
+			@media screen and (max-width: 1330px) {
+				.iframes,
+				.linkss {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+			@media screen and (max-width: 1024px) {
+				.iframes,
+				.linkss {
+					padding: 1rem;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				.iframes,
+				.linkss {
+					grid-template-columns: 1fr;
+				}
 			}
 		</style>
 	</head>
