@@ -63,7 +63,8 @@
 				filter: saturate(0);
 				transition: 0.3s;
 			}
-			.iframes > .frame-wrapper:hover {
+			.iframes > .frame-wrapper:hover,
+			.iframes > .frame-wrapper.active {
 				opacity: 1;
 				filter: none;
 			}
@@ -82,12 +83,45 @@
 				border: 1px solid #e6e6e6;
 				padding: 1rem;
 			}
+			footer {
+				position: fixed;
+				bottom: 0;
+				right: 0;
+				padding: 1rem;
+				box-shadow: 0 2px 8px 0 rgb(99 99 99 / 20%);
+				width: 10vw;
+				background-color: #f6f6f6;
+				border-top-left-radius: 1.3rem;
+				border: 2px solid white;
+				color: black;
+				text-align: center;
+				box-sizing: border-box;
+				display: flex;
+				gap: 1rem;
+				min-width: max-content;
+				align-items: center;
+			}
+			footer a {
+				color: black;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="iframes"></div>
 		<hr />
 		<div class="linkss"></div>
+		<footer>
+			By
+			<a target="_blank" href="https://shubhamprajapat.com/">Shubham P</a>
+
+			<a
+				class="github-button"
+				href="https://github.com/shubham-web/css-text-animations"
+				data-icon="octicon-star"
+				aria-label="Star shubham-web/css-text-animations on GitHub"
+				>Star</a
+			>
+		</footer>
 
 		<script>
 			let files = [
@@ -161,6 +195,27 @@
 				});
 				linksWrapper.appendChild(div);
 			});
+
+			// scroll visibility
+			let frameWrappers = document.querySelectorAll(".frame-wrapper");
+
+			let observer = new IntersectionObserver(
+				function (entries, observer) {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("active");
+						} else {
+							entry.target.classList.remove("active");
+						}
+					});
+				},
+				{ threshold: 1 }
+			);
+
+			frameWrappers.forEach((el) => {
+				observer.observe(el);
+			});
 		</script>
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	</body>
 </html>
